@@ -4,10 +4,10 @@ import { AudioPlayer } from './AudioPlayer'
 
 const TRACKS = [
   {
-    title: 'BAD GUY',
-    artist: 'KAMEL',
-    src: '/audio/bad-guy.wav',
-    artwork: '/images/album-art.jpg',
+    title: 'HOÜDINI (preview)',
+    artist: 'KAMEL — MONACO',
+    src: '/audio/houdini-preview.mp3',
+    artwork: '/images/monaco/painting-crop.jpg',
   },
 ]
 

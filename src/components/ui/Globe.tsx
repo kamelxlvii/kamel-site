@@ -3,60 +3,64 @@
 import { useEffect, useRef, useCallback } from 'react'
 import createGlobe from 'cobe'
 
-// Coordinates
-const LA = { lat: 34.0522, lng: -118.2437 }
-const ALEXANDRIA = { lat: 31.2001, lng: 29.9187 }
+const MONACO = { lat: 43.7384, lng: 7.4246 }
 
 export function Globe() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
-  const phiRef = useRef(0.3)
+  // start with Monaco facing the viewer
+  const phiRef = useRef(Math.PI - ((MONACO.lng * Math.PI) / 180 - Math.PI / 2))
 
   useEffect(() => {
     let width = 0
     let globe: ReturnType<typeof createGlobe> | null = null
 
-    const onResize = () => {
-      if (containerRef.current) {
-        width = containerRef.current.offsetWidth
+    // Build the globe once the container has a real size, and keep it matched to the container,
+    // so a zero-size first layout (or a later resize) can't leave it blank
+    const create = () => {
+      if (globe || !canvasRef.current || width === 0) return
+      // createGlobe throws when WebGL is unavailable; skip the globe rather than crash the page
+      try {
+        globe = createGlobe(canvasRef.current, {
+          devicePixelRatio: 2,
+          width: width * 2,
+          height: width * 2,
+          phi: 0,
+          theta: 0.45,
+          dark: 1,
+          diffuse: 1.2,
+          mapSamples: 16000,
+          mapBrightness: 6,
+          baseColor: [0.14, 0.13, 0.11],
+          markerColor: [1, 0.75, 0.01],
+          glowColor: [0.16, 0.13, 0.04],
+          markers: [{ location: [MONACO.lat, MONACO.lng], size: 0.12 }],
+          onRender: (state) => {
+            // Auto-rotate when not interacting
+            if (pointerInteracting.current === null) {
+              phiRef.current += 0.003
+            }
+            state.phi = phiRef.current + pointerInteractionMovement.current
+            state.width = width * 2
+            state.height = width * 2
+          },
+        })
+      } catch {
+        globe = null
       }
     }
-    onResize()
-    window.addEventListener('resize', onResize)
 
-    if (canvasRef.current) {
-      globe = createGlobe(canvasRef.current, {
-        devicePixelRatio: 2,
-        width: width * 2,
-        height: width * 2,
-        phi: 0,
-        theta: 0.3,
-        dark: 1,
-        diffuse: 1.2,
-        mapSamples: 16000,
-        mapBrightness: 6,
-        baseColor: [0.15, 0.15, 0.15],
-        markerColor: [1, 0.84, 0],
-        glowColor: [0.1, 0.1, 0.1],
-        markers: [
-          { location: [LA.lat, LA.lng], size: 0.1 },
-          { location: [ALEXANDRIA.lat, ALEXANDRIA.lng], size: 0.1 },
-        ],
-        onRender: (state) => {
-          // Auto-rotate when not interacting
-          if (pointerInteracting.current === null) {
-            phiRef.current += 0.003
-          }
-          state.phi = phiRef.current + pointerInteractionMovement.current
-        },
-      })
-    }
+    const ro = new ResizeObserver(() => {
+      width = containerRef.current?.offsetWidth ?? 0
+      create()
+    })
+    if (containerRef.current) ro.observe(containerRef.current)
 
     return () => {
+      ro.disconnect()
       globe?.destroy()
-      window.removeEventListener('resize', onResize)
     }
   }, [])
 
@@ -89,7 +93,7 @@ export function Globe() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-[600px] aspect-square mx-auto"
+      className="relative w-full aspect-square"
     >
       <canvas
         ref={canvasRef}
@@ -100,11 +104,6 @@ export function Globe() {
         onPointerOut={onPointerOut}
         onPointerMove={onPointerMove}
       />
-
-      {/* Interaction hint */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-        <span className="text-[10px] text-neutral-500 tracking-wide">drag to rotate</span>
-      </div>
     </div>
   )
 }

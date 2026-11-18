@@ -55,8 +55,8 @@ export function Header() {
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {[
-              { label: 'Music', href: 'https://open.spotify.com/artist/1b0Pti5rHGhBvl36SHEh1g', external: true },
-              { label: 'Video', href: 'https://youtube.com/@kamelxlvii', external: true },
+              { label: 'Monaco', href: '#music', external: false },
+              { label: 'Video', href: '#video', external: false },
               { label: 'Gallery', href: '#gallery', external: false },
               { label: 'Merch', href: '#merch', external: false },
             ].map((item) => (

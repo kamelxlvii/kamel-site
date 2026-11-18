@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { SITE } from '@/lib/constants'
+import { SITE, SOCIAL_LINKS, STREAMING_LINKS } from '@/lib/constants'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -13,8 +13,8 @@ export function Footer() {
   }
 
   return (
-    <AnimatedSection className="px-5 md:px-10 py-24 md:py-32">
-      <div className="max-w-md mx-auto text-center">
+    <AnimatedSection className="px-5 md:px-10 py-16 md:py-24 border-t border-[var(--border)]">
+      <div className="max-w-2xl mx-auto text-center">
         {/* Kamel Pack Logo - Click to scroll to top */}
         <motion.button
           onClick={scrollToTop}
@@ -27,7 +27,7 @@ export function Footer() {
           className="flex justify-center mb-10 mx-auto cursor-pointer"
           aria-label="Back to top"
         >
-          <div className="relative w-20 h-24 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:drop-shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all duration-300">
+          <div className="relative w-20 h-24 drop-shadow-[0_0_15px_var(--accent-glow)] hover:drop-shadow-[0_0_25px_var(--accent)] transition-all duration-300">
             <Image
               src="/images/camel-logo.png"
               alt="Kamel"
@@ -36,6 +36,20 @@ export function Footer() {
             />
           </div>
         </motion.button>
+
+        <nav className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[11px] uppercase tracking-[0.25em]">
+          {[...STREAMING_LINKS, ...SOCIAL_LINKS].map(link => (
+            <a
+              key={link.platform}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
         <p className="text-sm text-neutral-600">
           &copy; {year} {SITE.name}. All rights reserved.

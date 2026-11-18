@@ -1,18 +1,35 @@
 import { Hero } from '@/components/sections/Hero'
-import { Music } from '@/components/sections/Music'
+import { Tracklist } from '@/components/sections/Tracklist'
+import { Circuit } from '@/components/sections/Circuit'
 import { Video } from '@/components/sections/Video'
 import { Gallery } from '@/components/sections/Gallery'
+import { Merch } from '@/components/sections/Merch'
 import { Footer } from '@/components/sections/Footer'
-import { SocialConnect } from '@/components/ui/SocialConnect'
+import { GlobeSection } from '@/components/sections/GlobeSection'
+import { Marquee } from '@/components/ui/Marquee'
+import { MONACO } from '@/lib/constants'
+
+const TICKER = [
+  MONACO.title,
+  'Out now',
+  'The job is Monaco',
+  `Stream ${MONACO.focusTrack}`,
+  '8 tracks',
+  MONACO.runtime,
+  'Kamel Motorsport',
+]
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Hero />
-      <Music />
+      <Marquee items={TICKER} />
+      <Tracklist />
+      <Merch />
+      <Circuit />
       <Video />
       <Gallery />
-      <SocialConnect />
+      <GlobeSection />
       <Footer />
     </main>
   )

@@ -62,6 +62,16 @@ export function AudioPlayer({ tracks, className = '' }: AudioPlayerProps) {
     }
   }, [isPlaying, currentTrackIndex])
 
+  // Lets buttons elsewhere on the page (e.g. the focus-track preview) start playback
+  useEffect(() => {
+    const onPlayRequest = () => {
+      setIsVisible(true)
+      setIsPlaying(true)
+    }
+    window.addEventListener('player:play', onPlayRequest)
+    return () => window.removeEventListener('player:play', onPlayRequest)
+  }, [])
+
   const togglePlay = () => setIsPlaying(!isPlaying)
   const toggleMute = () => {
     if (audioRef.current) {

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { EyeOfHorus } from './EgyptianMotif'
+import Image from 'next/image'
 
 interface NewsletterModalProps {
   delay?: number // Delay before showing (ms)
@@ -80,16 +80,21 @@ export function NewsletterModal({ delay = 5000 }: NewsletterModalProps) {
               </button>
 
               <div className="relative text-center">
-                {/* Eye of Horus */}
                 <div className="flex justify-center mb-6">
-                  <EyeOfHorus size={80} />
+                  <Image
+                    src="/images/monaco/logo-f2.png"
+                    alt="MONACO"
+                    width={1600}
+                    height={339}
+                    className="w-56 h-auto mix-blend-screen"
+                  />
                 </div>
 
-                <h2 className="text-2xl font-medium text-white mb-2">
-                  Join the Journey
+                <h2 className="font-display font-wide font-black italic uppercase text-2xl text-white mb-2">
+                  Get in the car
                 </h2>
                 <p className="text-neutral-400 text-sm mb-6">
-                  Get exclusive updates, early access to releases, and behind-the-scenes content.
+                  First access to MONACO, the merch drop and everything behind the job.
                 </p>
 
                 {status === 'success' ? (
