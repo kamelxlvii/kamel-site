@@ -105,7 +105,7 @@ export function Merch() {
           </span>
         </div>
 
-        <div className="max-w-md mx-auto">
+        <div className="grid gap-12 md:gap-8 md:grid-cols-2 max-w-md md:max-w-4xl mx-auto">
           {MERCH_ITEMS.map((item, i) => <Product key={item.name} item={item} index={i} />)}
         </div>
       </div>

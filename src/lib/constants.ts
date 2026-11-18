@@ -76,10 +76,10 @@ export const VIDEOS = [
   { id: 'xfUUhkB10Jk', title: 'ëUROS' },
 ] as const
 
-// Three photos per video (BAD GUY, MEET MY PRICE, ëUROS); each opens its music video on YouTube
+// Photos from the BAD GUY, MEET MY PRICE and ëUROS videos; each opens its music video on YouTube
 export const GALLERY = [
   { src: '/images/gallery/mmp-01.jpg', width: 933, height: 1400, href: 'https://www.youtube.com/watch?v=YAZTZ3uvV2w', alt: 'Kamel, MEET MY PRICE shoot' },
-  { src: '/images/gallery/badguy-02.jpg', width: 1400, height: 928, href: 'https://www.youtube.com/watch?v=-d6PxWFS3qo', alt: 'Kamel, BAD GUY shoot' },
+  { src: '/images/gallery/euros-02.jpg', width: 1080, height: 720, href: 'https://www.youtube.com/watch?v=xfUUhkB10Jk', alt: 'Kamel, ëUROS shoot' },
   { src: '/images/gallery/euros-03.jpg', width: 1080, height: 720, href: 'https://www.youtube.com/watch?v=xfUUhkB10Jk', alt: 'Kamel, ëUROS shoot' },
   { src: '/images/gallery/badguy-04.jpg', width: 928, height: 1400, href: 'https://www.youtube.com/watch?v=-d6PxWFS3qo', alt: 'Kamel, BAD GUY shoot' },
   { src: '/images/gallery/mmp-05.jpg', width: 1400, height: 933, href: 'https://www.youtube.com/watch?v=YAZTZ3uvV2w', alt: 'Kamel, MEET MY PRICE shoot' },
@@ -96,6 +96,20 @@ export const MERCH_ITEMS = [
     src: '/images/monaco/merch-tee.jpg',
     name: 'Car Tee',
     note: 'Top-down 47',
+    price: 35,
+    shipping: 6,
+    sizes: [
+      { size: 'S', checkout: '', soldOut: false },
+      { size: 'M', checkout: '', soldOut: false },
+      { size: 'L', checkout: '', soldOut: false },
+      { size: 'XL', checkout: '', soldOut: false },
+      { size: '2XL', checkout: '', soldOut: false },
+    ],
+  },
+  {
+    src: '/images/monaco/merch-camel-tee.jpg',
+    name: 'Camel Pack Tee',
+    note: 'Planet of Your Own, est. 1997',
     price: 35,
     shipping: 6,
     sizes: [

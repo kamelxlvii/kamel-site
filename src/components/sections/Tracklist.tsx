@@ -42,7 +42,6 @@ export function Tracklist() {
 
         {/* Tracks */}
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-tertiary)] mb-3">The Tape</p>
           <h2 className="font-display font-wide font-black italic text-5xl md:text-7xl tracking-tight text-[var(--accent)] leading-none">
             {MONACO.title}
           </h2>

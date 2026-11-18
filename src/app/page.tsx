@@ -11,12 +11,9 @@ import { MONACO } from '@/lib/constants'
 
 const TICKER = [
   MONACO.title,
-  'Out now',
   'The job is Monaco',
-  `Stream ${MONACO.focusTrack}`,
-  '8 tracks',
-  MONACO.runtime,
-  'Kamel Motorsport',
+  'Out now',
+  'A Planet of Your Own',
 ]
 
 export default function Home() {

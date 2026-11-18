@@ -56,13 +56,6 @@ export function Hero() {
         style={shouldReduceMotion ? {} : { opacity }}
         className="relative z-10 w-full max-w-5xl text-center"
       >
-        <motion.p
-          {...fadeUp(0.2)}
-          className="text-[11px] md:text-xs uppercase tracking-[0.5em] text-[var(--text-secondary)] mb-8"
-        >
-          A Planet of Your Own presents
-        </motion.p>
-
         <motion.div {...fadeUp(0.35)} className="relative mx-auto w-full max-w-[820px]">
           {/* Logo artwork sits on black; screen blend drops the black onto the painting */}
           <Image
