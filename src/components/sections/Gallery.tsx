@@ -18,7 +18,7 @@ export function Gallery() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.3em] text-[var(--text-tertiary)] mb-12 text-center"
         >
-          The World of Monaco
+          Gallery
         </motion.h2>
 
         {/* Masonry: photos keep their own shape; each one opens its video */}

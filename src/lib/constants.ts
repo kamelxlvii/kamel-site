@@ -107,8 +107,8 @@ export const MERCH_ITEMS = [
     ],
   },
   {
-    src: '/images/monaco/merch-camel-tee.jpg',
-    name: 'Camel Pack Tee',
+    src: '/images/monaco/merch-kamel-tee.jpg',
+    name: 'Kamel Pack Tee',
     note: 'Planet of Your Own, est. 1997',
     price: 35,
     shipping: 6,
