@@ -84,7 +84,7 @@ export const GALLERY = [
   { src: '/images/gallery/badguy-04.jpg', width: 928, height: 1400, href: 'https://www.youtube.com/watch?v=-d6PxWFS3qo', alt: 'Kamel, BAD GUY shoot' },
   { src: '/images/gallery/mmp-05.jpg', width: 1400, height: 933, href: 'https://www.youtube.com/watch?v=YAZTZ3uvV2w', alt: 'Kamel, MEET MY PRICE shoot' },
   { src: '/images/gallery/euros-06.jpg', width: 1000, height: 667, href: 'https://www.youtube.com/watch?v=xfUUhkB10Jk', alt: 'Kamel, ëUROS shoot' },
-  { src: '/images/gallery/euros-07.jpg', width: 480, height: 720, href: 'https://www.youtube.com/watch?v=xfUUhkB10Jk', alt: 'Kamel, ëUROS shoot' },
+  { src: '/images/gallery/euros-07b.jpg', width: 480, height: 720, href: 'https://www.youtube.com/watch?v=xfUUhkB10Jk', alt: 'Kamel, ëUROS shoot' },
   { src: '/images/gallery/badguy-08.jpg', width: 1400, height: 788, href: 'https://www.youtube.com/watch?v=-d6PxWFS3qo', alt: 'Kamel, BAD GUY shoot' },
   { src: '/images/gallery/mmp-09.jpg', width: 1400, height: 933, href: 'https://www.youtube.com/watch?v=YAZTZ3uvV2w', alt: 'Kamel, MEET MY PRICE shoot' },
 ] as const
